@@ -374,7 +374,7 @@ class Resident_Manager
         {
             return $_POST['username'];
         }
-        else if(is_user_logged_in())
+        else if(!empty($GLOBALS['user_ID']))
         {
             if(empty($GLOBALS['current_user']))
             {
