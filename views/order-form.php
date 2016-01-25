@@ -26,7 +26,7 @@
             <? if(!empty($GLOBALS['user_ID'])): ?>
                 <input type="hidden" name="username" value="<?= htmlentities($username, ENT_QUOTES); ?>">
             <? else: ?>
-                <label for="username">RCHN Username <a  class="tipable help-icon" title="If you registered for the forums or any other portion of this site, please enter your username.">[?]</a>:</label><input type="text" name="username"  value="<?= htmlentities($resident->username); ?>" /><br />
+                <label for="username">RCHN Username <a  class="tipable help-icon" title="If you registered for this site, please enter the username you chose.">[?]</a>:</label><input type="text" name="username"  value="<?= htmlentities($resident->username); ?>" /><br />
             <? endif; ?>
             <input type="submit" value="Submit">
         </fieldset>
