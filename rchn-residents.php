@@ -16,21 +16,10 @@ class Resident_Manager
     protected $errors;
     protected $url;
     const MIN_WINNER_NUM = 7;
-    const DEBUG = false;
-      /* 
-    const USE_SANDBOX = true;
-    const FROM_EMAIL = 'RC Heli Nation <no-reply@rchelination.com>';
-    const PAYPAL_EMAIL = 'larry-facilitator@superiocity.com';
-    const PAYPAL_ITEM = 'RCHN Citizen Registration';
-    const REG_PRICE = '0.01';
-    */
-     
-    const USE_SANDBOX = false;
-    const FROM_EMAIL = 'RC Heli Nation <no-reply@rchelination.com>';
-    const PAYPAL_EMAIL = 'dan@rchelination.com';
-    const PAYPAL_ITEM = 'RCHN Citizen Registration';
-    const REG_PRICE = '10.00';
-    
+	const PAYPAL_ITEM = 'RCHN Citizen Registration';
+	const FROM_EMAIL = 'RC Heli Nation <no-reply@rchelination.com>';
+
+
     public function __construct()
     {
         if(!isset($_SESSION))
@@ -99,7 +88,7 @@ class Resident_Manager
     protected function process_paypal_ipn()
     {
         require_once 'lib/paypal-ipn.php';
-        $ipn = new PaypalIPN(self::DEBUG, self::USE_SANDBOX);
+        $ipn = new PaypalIPN(RCHN_CITIZEN_DEBUG, RCHN_CITIZEN_USE_SANDBOX);
         
         if(!$ipn->verify_paypal_request())
         {
@@ -108,11 +97,11 @@ class Resident_Manager
         
         // Ensure all the below are valid before continuing.
         $required = array(
-                'payment_status' => 'Completed',
-                'mc_gross'       => self::REG_PRICE,
-                'mc_currency'    => 'USD',
-                'receiver_email' => self::PAYPAL_EMAIL,
-                'item_name'     => self::PAYPAL_ITEM
+	        'payment_status' => 'Completed',
+	        'mc_gross'       => RCHN_CITIZEN_REG_PRICE,
+	        'mc_currency'    => 'USD',
+	        'receiver_email' => RCHN_CITIZEN_PAYPAL_EMAIL,
+	        'item_name'      => self::PAYPAL_ITEM
         );
         
         foreach($required as $key => $value)

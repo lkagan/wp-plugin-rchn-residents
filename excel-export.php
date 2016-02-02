@@ -13,7 +13,7 @@ class RCHNResidentExport
     
     function __construct()
     {
-        if(!is_user_logged_in())
+        if(empty($GLOBALS['user_ID']))
         {
             exit;
         }
