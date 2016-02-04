@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
+<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 <script>
     jQuery(document).ready(function($) {
         $('.tipable').tooltip();
